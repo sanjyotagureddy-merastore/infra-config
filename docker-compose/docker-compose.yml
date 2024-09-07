@@ -1,13 +1,13 @@
 services:
-  # database:
-    # container_name: database
-    # image: mcr.microsoft.com/mssql/server:latest
-    # environment:
-      # SA_PASSWORD: "SwN12345678"
-      # ACCEPT_EULA: "Y"
-    # restart: always
-    # ports:
-      # - "1433:1433"
+  database:
+    container_name: database
+    image: mcr.microsoft.com/mssql/server:latest
+    environment:
+      sa_password: "swn12345678"
+      accept_eula: "y"
+    restart: always
+    ports:
+      - "1433:1433"
 
   elastic.search:
     container_name: elastic.search
@@ -45,19 +45,7 @@ services:
       - "5601:5601"
     volumes:
       - kibana-data:/usr/share/kibana/data  # Persistent volume for Kibana
-  
-  jenkins:
-    container_name: jenkins
-    image: jenkins/jenkins:lts
-    restart: always
-    ports:
-      - "8080:8080"
-      - "50000:50000"
-    volumes:
-      - jenkins-data:/var/jenkins_home
-    networks:
-      - msec-net
-      
+
 volumes:
   share-data:
     driver: local
