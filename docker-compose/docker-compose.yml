@@ -1,13 +1,21 @@
+name: mera-store-infra
+
 services:
   database:
     container_name: database
     image: mcr.microsoft.com/mssql/server:latest
     environment:
-      sa_password: "swn12345678"
-      accept_eula: "y"
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${SA_PASSWORD}
+      - MSSQL_PID=Developer
+      - MSSQL_LCID=1033
     restart: always
     ports:
       - "1433:1433"
+    volumes:
+      - ./data/mssql/backups:/var/opt/mssql/backups
+      - ./data/mssql/data:/var/opt/mssql/data
+      - ./data/mssql/log:/var/opt/mssql/log
 
   elastic.search:
     container_name: elastic.search
@@ -27,10 +35,25 @@ services:
   redis.cache:
     image: redis:latest
     container_name: redis.cache
-    restart: always
+    command: redis-server --save 20 1 --loglevel warning --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    networks:
+      - msec-net
     ports:
       - "6379:6379"
-  
+      
+  consul:
+    image: hashicorp/consul:latest
+    container_name: Consul
+    ports:
+      - '8500:8500'
+    volumes:
+      - consul-data:/consul/data 
+    networks:
+      - msec-net
+    
   kibana:
     container_name: kibana
     image: docker.elastic.co/kibana/kibana:8.15.1
@@ -51,7 +74,9 @@ volumes:
     driver: local
   kibana-data:  # Declare the volume for Kibana
     driver: local
-  jenkins-data:
+  redis-data:
+    driver: local  
+  consul-data:
     driver: local
 
 networks:
