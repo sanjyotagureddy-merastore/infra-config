@@ -1,60 +1,103 @@
 USE [master];
 GO
 
--- Drop Database Users
+-- Drop Users and Logins
 -- Authentication
-IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-logging')
+IF EXISTS (SELECT * FROM sys.sql_logins WHERE name = N'mera-store-logging')
 BEGIN
-    DROP USER [mera-store-logging];
+    USE [Authentication];
+    IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-logging')
+    BEGIN
+        DROP USER [mera-store-logging];
+    END
+    USE [master];
     DROP LOGIN [mera-store-logging];
 END
 GO
 
 -- Orders
-IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-orders')
+IF EXISTS (SELECT * FROM sys.sql_logins WHERE name = N'mera-store-orders')
 BEGIN
-    DROP USER [mera-store-orders];
+    USE [Orders];
+    IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-orders')
+    BEGIN
+        DROP USER [mera-store-orders];
+    END
+    USE [master];
     DROP LOGIN [mera-store-orders];
 END
 GO
 
 -- Cart
-IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-cart')
+IF EXISTS (SELECT * FROM sys.sql_logins WHERE name = N'mera-store-cart')
 BEGIN
-    DROP USER [mera-store-cart];
+    USE [Cart];
+    IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-cart')
+    BEGIN
+        DROP USER [mera-store-cart];
+    END
+    USE [master];
     DROP LOGIN [mera-store-cart];
 END
 GO
 
 -- Inventory
-IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-inventory')
+IF EXISTS (SELECT * FROM sys.sql_logins WHERE name = N'mera-store-inventory')
 BEGIN
-    DROP USER [mera-store-inventory];
+    USE [Inventory];
+    IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-inventory')
+    BEGIN
+        DROP USER [mera-store-inventory];
+    END
+    USE [master];
     DROP LOGIN [mera-store-inventory];
 END
 GO
 
 -- Users
-IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-users')
+IF EXISTS (SELECT * FROM sys.sql_logins WHERE name = N'mera-store-users')
 BEGIN
-    DROP USER [mera-store-users];
+    USE [Users];
+    IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-users')
+    BEGIN
+        DROP USER [mera-store-users];
+    END
+    USE [master];
     DROP LOGIN [mera-store-users];
 END
 GO
 
 -- Products
-IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-products')
+IF EXISTS (SELECT * FROM sys.sql_logins WHERE name = N'mera-store-products')
 BEGIN
-    DROP USER [mera-store-products];
+    USE [Products];
+    IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-products')
+    BEGIN
+        DROP USER [mera-store-products];
+    END
+    USE [master];
     DROP LOGIN [mera-store-products];
+END
+GO
+
+-- Logging
+IF EXISTS (SELECT * FROM sys.sql_logins WHERE name = N'mera-store-logging')
+BEGIN
+    USE [Logging];
+    IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-logging')
+    BEGIN
+        DROP USER [mera-store-logging];
+    END
+    USE [master];
+    DROP LOGIN [mera-store-logging];
 END
 GO
 
 -- Drop Databases
 -- Authentication
-IF EXISTS (SELECT * FROM sys.databases WHERE name = N'Logging')
+IF EXISTS (SELECT * FROM sys.databases WHERE name = N'Authentication')
 BEGIN
-    DROP DATABASE Logging;
+    DROP DATABASE Authentication;
 END
 GO
 
@@ -90,5 +133,12 @@ GO
 IF EXISTS (SELECT * FROM sys.databases WHERE name = N'Products')
 BEGIN
     DROP DATABASE Products;
+END
+GO
+
+-- Logging
+IF EXISTS (SELECT * FROM sys.databases WHERE name = N'Logging')
+BEGIN
+    DROP DATABASE Logging;
 END
 GO

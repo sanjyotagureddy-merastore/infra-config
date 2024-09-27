@@ -104,6 +104,26 @@ GO
 -- Create Database and User for Authentication
 IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = N'Authentication')
 BEGIN
+    CREATE DATABASE Authentication;
+END
+GO
+
+USE Authentication;
+GO
+
+-- Strong Password for Authentication user
+CREATE LOGIN [mera-store-authentication] WITH PASSWORD = 'AuthP@ssw0rd2024$';
+GO
+
+CREATE USER [mera-store-authentication] FOR LOGIN [mera-store-authentication];
+GO
+
+ALTER ROLE db_owner ADD MEMBER [mera-store-authentication];
+GO
+
+-- Create Database and User for Logging
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = N'Logging')
+BEGIN
     CREATE DATABASE Logging;
 END
 GO
@@ -111,7 +131,7 @@ GO
 USE Logging;
 GO
 
--- Strong Password for Authentication user
+-- Strong Password for Logging user
 CREATE LOGIN [mera-store-logging] WITH PASSWORD = 'L0gG!ngP@ssw0rd2024$';
 GO
 
@@ -120,4 +140,3 @@ GO
 
 ALTER ROLE db_owner ADD MEMBER [mera-store-logging];
 GO
-
