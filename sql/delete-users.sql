@@ -3,15 +3,15 @@ GO
 
 -- Drop Users and Logins
 -- Authentication
-IF EXISTS (SELECT * FROM sys.sql_logins WHERE name = N'mera-store-logging')
+IF EXISTS (SELECT * FROM sys.sql_logins WHERE name = N'mera-store-authentication')
 BEGIN
     USE [Authentication];
-    IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-logging')
+    IF EXISTS (SELECT * FROM sys.database_principals WHERE name = N'mera-store-authentication')
     BEGIN
-        DROP USER [mera-store-logging];
+        DROP USER [mera-store-authentication];
     END
     USE [master];
-    DROP LOGIN [mera-store-logging];
+    DROP LOGIN [mera-store-authentication];
 END
 GO
 
