@@ -11,8 +11,8 @@ GO
 USE Products;
 GO
 
--- Strong Password for Products user
-CREATE LOGIN [mera-store-products] WITH PASSWORD = 'P@ssw0rd!2024$Prod';
+-- Strong Randomly Generated Password for Products user
+CREATE LOGIN [mera-store-products] WITH PASSWORD = 'N8d!7q#bL3x@9Pz*';
 GO
 
 CREATE USER [mera-store-products] FOR LOGIN [mera-store-products];
@@ -31,8 +31,8 @@ GO
 USE Users;
 GO
 
--- Strong Password for Users user
-CREATE LOGIN [mera-store-users] WITH PASSWORD = 'Us3rP@ssw0rd!2024';
+-- Strong Randomly Generated Password for Users user
+CREATE LOGIN [mera-store-users] WITH PASSWORD = 'C5v@3Fq*P8t$7Ns#';
 GO
 
 CREATE USER [mera-store-users] FOR LOGIN [mera-store-users];
@@ -51,8 +51,8 @@ GO
 USE Inventory;
 GO
 
--- Strong Password for Inventory user
-CREATE LOGIN [mera-store-inventory] WITH PASSWORD = 'Inv3nt0ry!2024$Pwd';
+-- Strong Randomly Generated Password for Inventory user
+CREATE LOGIN [mera-store-inventory] WITH PASSWORD = 'G1b$6Rt!Z9s*8Kw@';
 GO
 
 CREATE USER [mera-store-inventory] FOR LOGIN [mera-store-inventory];
@@ -71,8 +71,8 @@ GO
 USE Cart;
 GO
 
--- Strong Password for Cart user
-CREATE LOGIN [mera-store-cart] WITH PASSWORD = 'C@rtP@ssw0rd2024$';
+-- Strong Randomly Generated Password for Cart user
+CREATE LOGIN [mera-store-cart] WITH PASSWORD = 'Y2h@4Kq*W7v!1Lp$';
 GO
 
 CREATE USER [mera-store-cart] FOR LOGIN [mera-store-cart];
@@ -91,8 +91,8 @@ GO
 USE Orders;
 GO
 
--- Strong Password for Orders user
-CREATE LOGIN [mera-store-orders] WITH PASSWORD = '0rd3r$P@ssw0rd2024';
+-- Strong Randomly Generated Password for Orders user
+CREATE LOGIN [mera-store-orders] WITH PASSWORD = 'F9j$2Nq@P4m*6Vz#';
 GO
 
 CREATE USER [mera-store-orders] FOR LOGIN [mera-store-orders];
@@ -111,8 +111,8 @@ GO
 USE Authentication;
 GO
 
--- Strong Password for Authentication user
-CREATE LOGIN [mera-store-authentication] WITH PASSWORD = 'AuthP@ssw0rd2024$';
+-- Strong Randomly Generated Password for Authentication user
+CREATE LOGIN [mera-store-authentication] WITH PASSWORD = 'S7g@8Bc#T5h*3Xd$';
 GO
 
 CREATE USER [mera-store-authentication] FOR LOGIN [mera-store-authentication];
@@ -131,8 +131,8 @@ GO
 USE Logging;
 GO
 
--- Strong Password for Logging user
-CREATE LOGIN [mera-store-logging] WITH PASSWORD = 'L0gG!ngP@ssw0rd2024$';
+-- Strong Randomly Generated Password for Logging user
+CREATE LOGIN [mera-store-logging] WITH PASSWORD = 'J6k*9Pt@X2v#1Qc$';
 GO
 
 CREATE USER [mera-store-logging] FOR LOGIN [mera-store-logging];
